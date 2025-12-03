@@ -3,57 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>Contact Us - Nina’s Salon</title>
     <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/contactform.css">
+    <link href="https://fonts.googleapis.com/css2?family=OpenDyslexic&display=swap" rel="stylesheet">
 
+    
 </head>
 <body>
-     <nav>
-        <a href="contact.html"> </a>
-            <div id="menu">
-                <ul>
-                    <li><a href="../index.html">HOME</a></li>
-                    <li><a href="about.html">ABOUT</a></li>
-                    <li><a href="contact.html">CONTACT</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
+
+    <nav>
+        <div id="menu">
+            <ul>
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </div>
     </nav>
-<header>
-    <h1>Contact Us</h1>
-    <p> <br></p>
-</header>
 
-<section class = contact-box>
-    <h2>Location</h2>
-    <div class= "contact-box">  
-    <p> We are located in Dundrum Shopping Centre, 5th floor.<br>Post code: <br> D16X4K7</p>
-    </div>
-    <h2>Booking</h2>
-    <div class="contact-box">
-        <p>To make a booking please email us. <br> 
-        <h3>In the email include:</h3>
-        <ul>
-            <li>Your name</li>
-            <li>What you want done</li>
-            <li>What date you want to book</li>
-        </ul>
-    </div>
-    <h2> Email</h2> 
-    <div class="contact-box">
-        <p><a href="mailto:Ninathompsonbeautysalon@gmail.com">Ninathompsonbeautysalon@gmail.com</a></p>   
-    </div>
-    
-    <h2>Instagram</h2> 
-    <div class="contact-box">
-        <p><a href="https://instagram.com/Ninathomsponsbeautysalonpage" target="_blank">@Ninathomsponsbeautysalonpage</a></p>  
-    </div>
-    
-    <h2> Phone Number</h2> 
-    <div class="contact-box">
-        <p>+353 (01) 453 6541</p>    
-    </div>
+    <header>
+        <h1>Contact Us</h1>
+        <p>If you would like to contact us, please fill out the form below. <br> We look forward to hearing from you!</p>
+    </header>
 
-</section>
+    <section class="contact-box">
+        <div class="contact-box">
+            <h2>Location</h2>
+            <p>We are located in Dundrum Shopping Centre, 5th floor.<br>
+            Post code: D16X4K7</p>
+        </div>
+
+        <div class="contact-box">
+            <h2>Booking</h2>
+            <p>To make a booking please email us.</p>
+            <h3>In the email include:</h3>
+            <ul>
+                <li>Your name</li>
+                <li>What you want done</li>
+                <li>Preferred date and time</li>
+            </ul>
+        </div>
+
+        <div class="contact-box">
+            <h2>Email</h2>
+            <p><a href="mailto:Ninathompsonbeautysalon@gmail.com">Ninathompsonbeautysalon@gmail.com</a></p>
+        </div>
+
+        <div class="contact-box">
+            <h2>Instagram</h2>
+            <p><a href="https://instagram.com/Ninathomsponsbeautysalonpage" target="_blank">@Ninathomsponsbeautysalonpage</a></p>
+        </div>
+
+        <div class="contact-box">
+            <h2>Phone Number</h2>
+            <p>+353 (01) 453 6541</p>
+        </div>
+    </section>
+
+    <section>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label><br>
+            <input type="text" id="fullname" name="fullname" required><br>
+            <p id="nameError" class="error">Please enter your name.</p>
+
+            <label for="email">Email Address:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <p id="emailError" class="error">Please enter a valid email address.</p>
+
+            <label for="service">Service:</label><br>
+            <select id="service" name="service" required>
+                <option value="">--Select a Service--</option>
+                <option value="hair">Hair</option>
+                <option value="nails">Nails</option>
+                <option value="makeup">Makeup</option>
+                <option value="other">Other</option>
+            </select><br>
+            <p id="serviceError" class="error">Please select a service.</p>
+
+            <label for="inquiry">Inquiry Type:</label><br>
+            <select id="inquiry" name="inquiry" required>
+                <option value="">--Select Inquiry Type--</option>
+                <option value="booking">Booking</option>
+                <option value="product">Product Recommendations</option>
+                <option value="general">General Questions</option>
+            </select><br>
+            <p id="inquiryError" class="error">Please select an inquiry type.</p>
+
+            <label for="message">Additional Details:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
+            <p id="messageError" class="error">Please enter additional details.</p>
+
+            <input type="submit" value="Submit">
+</form>
+    </section>
+
+    <script>
+        function validateForm() 
+        {
+            let valid = true;
+            document.querySelectorAll('.error').forEach(e => e.style.display = 'none');
+
+            if (document.getElementById('fullname').value.trim() === '') 
+            {
+                document.getElementById('nameError').style.display = 'block';
+                valid = false;
+            }
+
+            if (document.getElementById('email').value.trim() === '') 
+            {
+                document.getElementById('emailError').style.display = 'block';
+                valid = false;
+            }
+
+            if (document.getElementById('contactMethod').value === '') 
+            {
+                document.getElementById('methodError').style.display = 'block';
+                valid = false;
+            }
+
+            if (document.getElementById('message').value.trim() === '') 
+            {
+                document.getElementById('messageError').style.display = 'block';
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
 </body>
 </html>
